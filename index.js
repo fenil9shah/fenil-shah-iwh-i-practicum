@@ -18,7 +18,7 @@ const PRIVATE_APP_ACCESS = '';
 
 // * Code for Route 2 goes here
 app.get('/update-cobj', async (req, res) => {
-    const students = 'https://api.hubspot.com/crm/v3/objects/students';
+    const students = 'https://api.hubspot.com/crm/v3/objects/2-38042477?properties=name,email,student_grade';
     const headers = {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ app.get('/update-cobj', async (req, res) => {
     try {
         const resp = await axios.get(students, { headers });
         const data = resp.data.results;
-        res.render('students', { title: 'Update Custom Object Form | Integrating With Hubspot I Practicum', data });      
+        res.render('updates', { title: 'Update Custom Object Form | Integrating With Hubspot I Practicum', data });      
     } catch (error) {
         console.error(error);
     }
